@@ -107,6 +107,7 @@ class ConnectionsView(AjaxCapableProcessFormViewMixin, FormView):
                                           'socialaccount/messages/'
                                           'account_disconnected.txt')
         form.save()
+        self.success_url = self.request.POST.get('next', self.success_url)
         return super(ConnectionsView, self).form_valid(form)
 
 
